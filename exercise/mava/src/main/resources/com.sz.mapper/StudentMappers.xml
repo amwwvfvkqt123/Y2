@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--Mybatis的具体的dao对应的配置文件,就类似于那个impl-->
+<!--namespace要和我们的dao的接口进行绑定-->
+<mapper namespace="com.sz.mapper.StudentMapper">
+    <!--CRUD都提供了标准的标签
+        C:create
+        R:retrieve
+        U:update
+        D:delete
+        增删改查
+    -->
+
+    <!--对于select而言,我们要通知mybatis,你帮我封装成我指定的数据库类型-->
+    <!--list集合(如果你要查询的结果是一个集合,你描述集合当中的元素的是java类型就可以了.)-->
+    <!--如果你要查询的结果就是一个普通的java对象,resultType直接写对应的Pojo就可以了.-->
+    <select id="listAll" resultType="com.sz.entity.Student">
+        select * from mytables
+    </select>
+    <insert id="inst" parameterType="com.sz.entity.Student">
+        INSERT  INTO `mytables`(`ISBN`,`name`,`price`,`discount`,`publisher`)VALUES (#{ISBN},#{name},#{price},#{discount},#{publisher})
+    </insert>
+    <select id="selectByName" resultType="com.sz.entity.Student">
+       SELECT * FROM mytables WHERE `name`= #{name}
+    </select>
+    <!--<select id="selectByNameAge" resultType="com.sz.entity.Student">-->
+       <!--SELECT * FROM mytables WHERE `name`= #{param1} and `price`=#{param2}-->
+    <!--</select>-->
+    <select id="selectByNameAge" resultType="com.sz.entity.Student">
+       SELECT * FROM mytables WHERE `name`= #{name} and `price`=#{price}
+    </select>
+</mapper>

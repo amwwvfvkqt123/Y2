@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--编写一下配置文件-->
+
+    <!--配置环境我们,配置环境我们
+
+           生产环境
+           测试环境
+           开发环境
+
+    -->
+
+    <!--引用外部的属性文件
+        在外的属性文件当中的优先级高于
+        property子节点
+
+    -->
+
+    <properties resource="db.properties"/>
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <!--支持三种类型 UNPOOLED POOLED JNDI-->
+            <dataSource type="POOLED">
+                <!--数据库连接的四项基本属性-->
+                <property name="url" value="${url}"/>
+                <property name="driver" value="${driver}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <!--写完Mapper.xml文件之后要引入文件-->
+
+    <mappers>
+        <mapper resource="com.sz.mapper/StudentMappers.xml"></mapper>
+        <!--<mapper class="com.sz.dao.StudentMapper"/>-->
+        <!--<package name="com.sz.mapper"/>-->
+    </mappers>
+
+</configuration>
