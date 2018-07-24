@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.sz.bean.Book" id="book" init-method="into" scope="singleton" destroy-method="destroy">
+        <property name="name" value="李明"/>
+    </bean>
+    <bean class="com.sz.bean.Book" id="book2" init-method="into" scope="prototype">
+        <property name="name" value="李明"/>
+        <property name="price" value="58" />
+    </bean>
+
+    <bean class="com.sz.bean.Fies1" id="fies1" init-method="sa">
+        <property name="id" value="1"/>
+    </bean>
+    <bean class="com.sz.bean.Fies2" id="food" init-method="srg" depends-on="fies1">
+        <property name="id" value="2"/>
+    </bean>
+
+    <bean class="com.sz.bean.Book" id="id6"  >
+        <property name="name" value="mvafsad"/>
+    </bean>
+
+    <bean class="com.sz.bean.Book" id="id7" parent="id6">
+        <property name="price" value="50"/>
+    </bean>
+
+
+</beans>

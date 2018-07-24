@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean class="com.sz.bean.Grale" id="girl">
+        <property name="frie">
+            <array>
+                <value>元哥</value>
+                <value>程咬金</value>
+                <value>李白</value>
+                <value>李元芳</value>
+            </array>
+        </property>
+    </bean>
+
+    <bean class="com.sz.bean.Grale" id="a1">
+        <property name="noe">
+            <list>
+                <value>32</value>
+                <value>31</value>
+                <value>30</value>
+                <value>213</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.sz.bean.Grale" id="a2" parent="a1">
+        <property name="books">
+            <set>
+                <bean class="com.sz.bean.Book">
+                    <property name="name" value="张飞"/>
+                    <property name="price" value="23"/>
+                </bean>
+                <bean class="com.sz.bean.Book">
+                    <property name="name" value="韩信"/>
+                    <property name="price" value="23"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+    <bean class="com.sz.bean.Grale" id="a5" parent="a2">
+       <property name="fies1Map">
+           <map>
+               <entry key="fo1">
+                    <bean class="com.sz.bean.Fies1">
+                        <property name="id" value="5"/>
+                    </bean>
+               </entry>
+           </map>
+       </property>
+    </bean>
+
+</beans>
